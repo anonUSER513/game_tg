@@ -82,14 +82,14 @@ function getTickets() {
         localStorage.setItem('tickets', tickets); // Сохраняем количество билетов
         localStorage.setItem('lastTicketTime', currentTime); // Сохраняем время последнего получения билетов
         ticketsElement.textContent = `${tickets}`;
-        alert(`Вы получили ${TICKETS_PER_DAY} билетов!`);
+        //alert(`Вы получили ${TICKETS_PER_DAY} билетов!`);
 		
 		// Перезапуск таймера
         resetTicketTimer();
     } else {
         const remainingTime = Math.ceil((TICKET_COOLDOWN - (currentTime - lastTicketTime)) / 1000);
         updateTicketProgress(remainingTime);
-        alert(`Следующие билеты будут доступны через ${remainingTime} секунд.`);
+        //alert(`Следующие билеты будут доступны через ${remainingTime} секунд.`);
     }
 }
 
@@ -225,7 +225,7 @@ document.getElementById('referral-btn').addEventListener('click', () => {
     // Обработчик для кнопки "Скопировать ссылку"
     document.getElementById('copy-link-btn').addEventListener('click', () => {
         navigator.clipboard.writeText(referralLink);  // Копируем ссылку в буфер обмена
-        alert('Ссылка скопирована!');
+        //alert('Ссылка скопирована!');
     });
 
     // Обработчик для кнопки "Поделиться"
