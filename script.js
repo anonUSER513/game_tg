@@ -208,9 +208,9 @@ function generateReferralLink() {
     const userId = tg.initDataUnsafe?.user?.id;
     
     if (userId) {
-        return `https://t.me/only_click_bot?start=${userId}`; // Формируем реферальную ссылку
+        return `https://t.me/BLYP_bot?start=${userId}`; // Формируем реферальную ссылку
     }
-    return 'https://t.me/only_click_bot'; // Заглушка на случай, если ID не доступно
+    return 'https://t.me/BLYP_bot'; // Заглушка на случай, если ID не доступно
 }
 
 // Обработчик для кнопки "Рефералы"
