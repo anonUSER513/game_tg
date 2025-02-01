@@ -230,11 +230,11 @@ document.getElementById('referral-btn').addEventListener('click', () => {
 
     // Обработчик для кнопки "Поделиться"
     document.getElementById('share-link-btn').addEventListener('click', () => {
-        const shareText = "Смотри какая крутая игра! ";  // Текст, который мы хотим отправить
+        const shareText = "Just pop the bubbles and wait... ";  // Текст, который мы хотим отправить
         const shareUrl = `${generateReferralLink()}`;  // Реферальная ссылка
         
         // Формируем ссылку для Telegram с текстом и реферальной ссылкой
-        const message = `${shareText} ${shareUrl}`;
+        const message = `${shareText}`;
         const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(message)}`;
 
         // Открываем ссылку в Telegram
