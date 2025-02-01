@@ -7,7 +7,7 @@ tg.ready();
 // Включаем полноэкранный режим
 tg.expand();
 
-//tg.requestFullscreen();		// Максимально большой экран
+tg.requestFullscreen();		// Максимально большой экран
 
 // Универсальные функции для анимации
 function showElementWithAnimation(elementId) {
@@ -41,7 +41,7 @@ let tickets = localStorage.getItem('tickets') ? parseInt(localStorage.getItem('t
 let lastTicketTime = localStorage.getItem('lastTicketTime') ? parseInt(localStorage.getItem('lastTicketTime')) : 0;
 const TICKET_COST = 1; // Стоимость одного билета для игры
 const TICKETS_PER_DAY = 5; // Количество билетов, которые можно получить за день
-const TICKET_COOLDOWN = 24 * 60 * 60 * 1000;; // 24 часа в миллисекундах
+const TICKET_COOLDOWN = 24 * 60 * 60 * 1000; // 24 часа в миллисекундах
 
 // Элементы UI
 const ticketsElement = document.getElementById('tickets');
@@ -132,7 +132,7 @@ function updateTicketButton() {
     const currentTime = Date.now();
     if (currentTime - lastTicketTime >= TICKET_COOLDOWN) {
         progressBar.style.width = '100%'; // Прогресс заполнен
-        ticketTimerElement.textContent = '00:00:00'; // Время до получения билетов = 0
+        ticketTimerElement.textContent = 'Забрать'; // Время до получения билетов = 0
     } else {
         const remainingTimeInSeconds = Math.ceil((TICKET_COOLDOWN - (currentTime - lastTicketTime)) / 1000);
         updateTicketProgress(remainingTimeInSeconds);
