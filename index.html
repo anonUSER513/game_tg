@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, minimum-scale=1">
+    <meta name="theme-color" content="#0088cc"> <!-- Цвет для Telegram Web App -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BLYP Game</title>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-background"></div> <!-- Фон игры -->
+    <div id="menu-background"></div> <!-- Фон главного меню -->
+    
+    <div id="game-container">
+        
+			<!-- Экран загрузки -->
+	<div id="loading-screen" class="loading-screen">
+		<div class="loading-spinner"></div>
+		<p>Loading...</p>
+	</div>
+	
+	
+		<!-- Главное меню -->
+        <div id="menu">
+            <h1>BLYP!</h1>
+
+			<table>
+				<tr>
+					<td>
+						<div id="total-bubbles">
+							<span>0</span>
+						</div> <!-- Счётчик собранных пузырей с иконкой -->
+					</td>
+					<td>
+						<img src="images/bubble-icon.png" alt="Bubble Icon" class="icon-menu">
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<div id="total-blyp">
+							<span>0</span>
+						</div>
+					</td>
+					<td>
+						<img src="images/blyp-icon.png" alt="Bubble Icon" class="icon-menu">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h1></h1>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<div id="tickets">
+							<span>0</span>
+						</div>
+					</td>
+					<td>
+						<img src="images/ticket-icon.png" alt="Bubble Icon" class="icon-tickets-menu">
+					</td>
+			</table>
+
+			
+			<table>
+				<tr>
+					<td>
+												<!-- Кнопка получения билета -->
+						<button id="get-ticket-btn" class="progress-button">
+						<table>
+
+							<tr>
+								<td>
+									<h2>+5</h2>
+								</td>
+								<td>
+									<img src="images/ticket-icon.png" alt="Bubble Icon" class="icon-tickets-menu">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span id="ticket-timer">00:00:00</span> <!-- Время до получения билета -->
+								</td>
+							</tr>
+
+						</table>
+							
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>	
+						<button id="start-btn">Играть</button>
+						<button id="referral-btn">Друзья</button> <!-- Кнопка рефералов -->
+					</td>
+				</tr>
+			</table>
+			
+
+        </div>
+        <!-- Экран рефералов -->
+        <div id="referral-screen" style="display: none;">
+            <h2>Реферальная ссылка</h2>
+            <h2 id="referral-link">https://t.me/your_telegram_bot?start=referral_code</h2> <!-- Ссылка для рефералов -->
+            <button id="copy-link-btn">Скопировать ссылку</button>
+            <button id="share-link-btn">Поделиться</button>
+            <button id="back-to-menu-btn">Назад</button>
+        </div>
+
+        <!-- Экран игры -->
+        <div id="game" style="display: none;">
+
+			<div id="score">
+				<img src="images/bubble-icon.png" alt="Bubble Icon" class="icon">
+				<span>0</span>
+			</div> <!-- Счётчик собранных пузырей с иконкой -->
+			
+			<button id="pause-btn">
+				<div id="timer">
+					<img src="images/clock-icon.png" alt="Clock Icon" class="icon-time">
+					<span>00:45</span>
+				</div>
+			</button>
+        </div>
+
+        <!-- Экран паузы -->
+        <div id="pause-screen" style="display: none;">
+            <h2>Пауза</h2>
+            <button id="resume-btn">Продолжить</button>
+            <button id="exit-to-menu-btn">Меню</button>
+        </div>
+
+        <!-- Экран окончания игры -->
+        <div id="end-screen" style="display: none;">
+			<img src="images/beach.gif" alt="ends-gifs" class="end-gif">
+            <h2>Великолепно!</h2>
+			<table>
+				<tr>
+					<td>
+						<img src="images/bubble-icon.png" alt="Bubble Icon" class="icon">
+					</td>
+					<td>
+						<h1 id="final-score">0</h1>
+					</td>
+				</tr>
+			</table>
+			<table>	
+				<tr>
+					<td>
+						<h2>Рекорд:</h2>
+					</td>
+					<td>
+						<img src="images/bubble-icon.png" alt="Bubble Icon" class="icon">
+					</td>
+					<td>
+						<h2 id="best-score">Рекорд: 0</h2>
+					</td>
+				</tr>
+			</table>
+            
+            
+            <button id="restart-btn" onclick="restartGame()">Играть</button>
+			
+        </div>
+		
+
+    </div>
+
+    <!-- Подключение Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
